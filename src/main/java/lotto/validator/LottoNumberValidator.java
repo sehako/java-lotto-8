@@ -10,13 +10,18 @@ import lotto.exception.ZeroStartException;
 public class LottoNumberValidator {
     private static final Pattern NUMBER_PATTERN = Pattern.compile("^[0-9]+$");
 
-    public static void validateNumber(String input) {
+    public static void validate(String input) {
+        validateNumber(input);
+        validateNotZeroStart(input);
+    }
+
+    private static void validateNumber(String input) {
         if (isNotNumber(input)) {
             throw new InvalidInputException(INVALID_INPUT);
         }
     }
 
-    public static void validateNotZeroStart(String input) {
+    private static void validateNotZeroStart(String input) {
         if (input.startsWith("0")) {
             throw new ZeroStartException(ZERO_START_NUMBER);
         }

@@ -3,6 +3,7 @@ package lotto.validator;
 import static lotto.exception.common.ErrorMessage.INVALID_INPUT;
 import static lotto.exception.common.ErrorMessage.ZERO_START_NUMBER;
 
+import lotto.exception.common.ErrorMessage;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,6 +11,12 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class LottoNumberValidatorTest {
+
+    private static void testExceptionThrownBy(String input, ErrorMessage errorMessage) {
+        Assertions.assertThatThrownBy(() -> LottoNumberValidator.validate(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(errorMessage.getMessage());
+    }
 
     @ParameterizedTest
     @ValueSource(strings = {"이만원", "사십", "2십사"})
@@ -19,9 +26,7 @@ class LottoNumberValidatorTest {
 
         // when
         // then
-        Assertions.assertThatThrownBy(() -> LottoNumberValidator.validateNumber(input))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(INVALID_INPUT.getMessage());
+        testExceptionThrownBy(input, INVALID_INPUT);
     }
 
     @Test
@@ -32,8 +37,6 @@ class LottoNumberValidatorTest {
 
         // when
         // then
-        Assertions.assertThatThrownBy(() -> LottoNumberValidator.validateNotZeroStart(input))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ZERO_START_NUMBER.getMessage());
+        testExceptionThrownBy(input, ZERO_START_NUMBER);
     }
 }
