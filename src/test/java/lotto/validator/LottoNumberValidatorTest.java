@@ -1,0 +1,25 @@
+package lotto.validator;
+
+import static lotto.exception.common.ErrorMessage.INVALID_INPUT;
+
+import lotto.exception.InvalidInputException;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+class LottoNumberValidatorTest {
+
+    @ParameterizedTest
+    @ValueSource(strings = {"이만원", "사십", "2십사"})
+    @DisplayName("사용자가 숫자가 아닌 값을 입력하면 오류가 발생한다.")
+    public void invalidInputTest(String input) {
+        // given
+
+        // when
+        // then
+        Assertions.assertThatThrownBy(() -> LottoNumberValidator.validateNumber(input))
+                .isInstanceOf(InvalidInputException.class)
+                .hasMessage(INVALID_INPUT.getMessage());
+    }
+}

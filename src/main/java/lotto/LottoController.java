@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.parser.InputParser;
 import lotto.view.InputView;
 
 public class LottoController {
@@ -11,5 +12,8 @@ public class LottoController {
 
     public void start() {
         String purchaseAmount = inputView.inputPurchaseAmount();
+        int purchaseAmountNumber = InputParser.parsePurchaseAmount(purchaseAmount);
+
+
     }
 }
