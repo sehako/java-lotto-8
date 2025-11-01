@@ -10,13 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class LottoNumberValidatorTest {
-
-    private static void testExceptionThrownBy(String input, ErrorMessage errorMessage) {
-        Assertions.assertThatThrownBy(() -> LottoNumberValidator.validate(input))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(errorMessage.getMessage());
-    }
+class NumberInputValidatorTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"이만원", "사십", "2십사"})
@@ -38,5 +32,11 @@ class LottoNumberValidatorTest {
         // when
         // then
         testExceptionThrownBy(input, ZERO_START_NUMBER);
+    }
+
+    private void testExceptionThrownBy(String input, ErrorMessage errorMessage) {
+        Assertions.assertThatThrownBy(() -> NumberInputValidator.validate(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(errorMessage.getMessage());
     }
 }

@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 import lotto.exception.InvalidInputException;
 import lotto.exception.ZeroStartException;
 
-public class LottoNumberValidator {
+public class NumberInputValidator {
     private static final Pattern NUMBER_PATTERN = Pattern.compile("^[0-9]+$");
 
     public static void validate(String input) {
