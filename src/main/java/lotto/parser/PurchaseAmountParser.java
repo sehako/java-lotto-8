@@ -5,10 +5,10 @@ import static lotto.exception.common.ErrorMessage.INVALID_PURCHASE_PRICE;
 import lotto.exception.InvalidPurchaseAmountException;
 import lotto.validator.NumberInputValidator;
 
-public class InputParser {
+public class PurchaseAmountParser {
     private static final int BASIC_PURCHASE_PRICE = 1000;
 
-    public static int parsePurchaseAmount(String input) {
+    public static int parse(String input) {
         NumberInputValidator.validate(input);
 
         int purchaseAmount = Integer.parseInt(input);

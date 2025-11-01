@@ -7,7 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class InputParserTest {
+class PurchaseAmountParserTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"1001", "999"})
@@ -17,7 +17,7 @@ class InputParserTest {
         // when
         // then
 
-        Assertions.assertThatThrownBy(() -> InputParser.parsePurchaseAmount(input))
+        Assertions.assertThatThrownBy(() -> PurchaseAmountParser.parse(input))
                 .isInstanceOf(InvalidPurchaseAmountException.class)
                 .hasMessage(ErrorMessage.INVALID_PURCHASE_PRICE.getMessage());
     }
