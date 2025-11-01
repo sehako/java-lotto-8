@@ -1,10 +1,11 @@
 package lotto.validator;
 
 import static lotto.exception.common.ErrorMessage.INVALID_INPUT;
+import static lotto.exception.common.ErrorMessage.ZERO_START_NUMBER;
 
-import lotto.exception.InvalidInputException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -19,7 +20,20 @@ class LottoNumberValidatorTest {
         // when
         // then
         Assertions.assertThatThrownBy(() -> LottoNumberValidator.validateNumber(input))
-                .isInstanceOf(InvalidInputException.class)
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(INVALID_INPUT.getMessage());
+    }
+
+    @Test
+    @DisplayName("사용자가 0으로 시작하는 값을 입력하면 오류가 발생한다.")
+    public void zeroStartNumberInputTest() {
+        // given
+        String input = "012345";
+
+        // when
+        // then
+        Assertions.assertThatThrownBy(() -> LottoNumberValidator.validateNotZeroStart(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ZERO_START_NUMBER.getMessage());
     }
 }
