@@ -5,7 +5,7 @@ import lotto.domain.LottoMachine;
 import lotto.domain.Lottos;
 import lotto.dto.LottoPurchaseInformation;
 import lotto.parser.PurchaseInformationParser;
-import lotto.parser.WinningLottoParser;
+import lotto.parser.WinningNumberParser;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -52,7 +52,7 @@ public class LottoController {
         while (true) {
             try {
                 String winningNumberInput = inputView.inputWinningNumbers();
-                return WinningLottoParser.parse(winningNumberInput);
+                return WinningNumberParser.parse(winningNumberInput);
             } catch (IllegalArgumentException error) {
                 outputView.printExceptionMessage(error);
             }

@@ -5,7 +5,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class WinningLottoParserTest {
+class WinningNumberParserTest {
 
     @Test
     @DisplayName("사용자가 당첨 번호를 입력하면 쉽표 기준으로 당첨 로또를 발급한다.")
@@ -14,7 +14,7 @@ class WinningLottoParserTest {
         String input = "1,2,3,4,5,6";
 
         // when
-        Lotto winningLotto = WinningLottoParser.parse(input);
+        Lotto winningLotto = WinningNumberParser.parse(input);
 
         // then
         Assertions.assertThat(winningLotto.numbers())
@@ -28,7 +28,7 @@ class WinningLottoParserTest {
         String input = "1, 2, 3, 4, 5, 6";
 
         // when
-        Lotto winningLotto = WinningLottoParser.parse(input);
+        Lotto winningLotto = WinningNumberParser.parse(input);
 
         // then
         Assertions.assertThat(winningLotto.numbers())

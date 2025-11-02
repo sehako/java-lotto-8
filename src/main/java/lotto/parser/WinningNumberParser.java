@@ -6,7 +6,7 @@ import lotto.exception.InvalidLottoNumberException;
 import lotto.exception.common.ErrorMessage;
 import lotto.validator.LottoNumberValidator;
 
-public class WinningLottoParser {
+public class WinningNumberParser {
     private static final String WINNING_NUMBER_DELIMITER = ",";
 
     public static Lotto parse(String winningNumberInput) {
