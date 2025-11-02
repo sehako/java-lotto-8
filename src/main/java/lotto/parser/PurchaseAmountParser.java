@@ -4,6 +4,7 @@ import static lotto.exception.common.ErrorMessage.INVALID_PURCHASE_PRICE;
 import static lotto.exception.common.ErrorMessage.INVALID_PURCHASE_PRICE_RANGE;
 import static lotto.exception.common.ErrorMessage.MAXIMUM_PURCHASE_PRICE_OVER;
 
+import lotto.dto.LottoPurchaseInformation;
 import lotto.exception.PurchaseAmountException;
 import lotto.validator.NumberInputValidator;
 
@@ -11,7 +12,7 @@ public class PurchaseAmountParser {
     private static final int BASIC_PURCHASE_PRICE = 1000;
     private static final int MAX_PURCHASE_PRICE = 2_000_000_000;
 
-    public static int parse(String input) {
+    public static LottoPurchaseInformation parse(String input) {
         NumberInputValidator.validate(input);
 
         int purchaseAmount = convertToInteger(input);
@@ -20,7 +21,7 @@ public class PurchaseAmountParser {
             throw new PurchaseAmountException(INVALID_PURCHASE_PRICE);
         }
 
-        return purchaseAmount;
+        return LottoPurchaseInformation.of(purchaseAmount);
     }
 
     private static int convertToInteger(String input) {
