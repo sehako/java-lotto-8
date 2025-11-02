@@ -1,12 +1,15 @@
 package lotto;
 
 import lotto.view.ConsoleInputView;
+import lotto.view.ConsoleOutputView;
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
         InputView inputView = new ConsoleInputView();
-        LottoController lottoController = new LottoController(inputView);
+        OutputView outputView = new ConsoleOutputView();
+        LottoController lottoController = new LottoController(inputView, outputView);
 
         lottoController.start();
     }
