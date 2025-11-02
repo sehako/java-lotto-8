@@ -24,17 +24,17 @@ public class LottoController {
         this.lottoMachine = lottoMachine;
     }
 
-    public void start() {
+    public void run() {
         LottoPurchaseInformation purchaseInformation = inputPurchaseAmount();
         Lottos lottos = issueLottos(purchaseInformation);
         Lotto winningNumbers = inputWinningNumbers();
     }
 
-    private Lotto inputWinningNumbers() {
+    private LottoPurchaseInformation inputPurchaseAmount() {
         while (true) {
+            String purchasePrice = inputView.inputPurchasePrice();
             try {
-                String winningNumberInput = inputView.inputWinningNumbers();
-                return WinningLottoParser.parse(winningNumberInput);
+                return PurchaseInformationParser.parse(purchasePrice);
             } catch (IllegalArgumentException error) {
                 outputView.printExceptionMessage(error);
             }
@@ -47,11 +47,11 @@ public class LottoController {
         return lottos;
     }
 
-    private LottoPurchaseInformation inputPurchaseAmount() {
+    private Lotto inputWinningNumbers() {
         while (true) {
-            String purchasePrice = inputView.inputPurchasePrice();
             try {
-                return PurchaseInformationParser.parse(purchasePrice);
+                String winningNumberInput = inputView.inputWinningNumbers();
+                return WinningLottoParser.parse(winningNumberInput);
             } catch (IllegalArgumentException error) {
                 outputView.printExceptionMessage(error);
             }

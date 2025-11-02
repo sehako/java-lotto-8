@@ -13,6 +13,6 @@ public class Application {
         LottoMachine lottoMachine = new LottoMachine();
         LottoController lottoController = new LottoController(inputView, outputView, lottoMachine);
 
-        lottoController.start();
+        lottoController.run();
     }
 }
