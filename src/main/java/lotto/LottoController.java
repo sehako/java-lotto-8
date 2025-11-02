@@ -25,7 +25,11 @@ public class LottoController {
     public void start() {
         LottoPurchaseInformation purchaseInformation = inputPurchaseAmount();
         Lottos lottos = issueLottos(purchaseInformation);
+        String winningNumbers = inputWinningNumbers();
+    }
 
+    private String inputWinningNumbers() {
+        return inputView.inputWinningNumbers();
     }
 
     private Lottos issueLottos(LottoPurchaseInformation purchaseInformation) {
