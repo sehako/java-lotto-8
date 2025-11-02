@@ -2,6 +2,9 @@ package lotto.parser;
 
 import java.util.List;
 import lotto.domain.Lotto;
+import lotto.exception.InvalidLottoNumberException;
+import lotto.exception.common.ErrorMessage;
+import lotto.validator.LottoNumberValidator;
 import lotto.validator.NumberInputValidator;
 
 public class WinningLottoParser {
@@ -21,8 +24,18 @@ public class WinningLottoParser {
         return winningNumberList.stream()
                 .map(number -> {
                     NumberInputValidator.validate(number);
-                    return Integer.parseInt(number);
+                    int lottoNumber = convertToInteger(number);
+                    LottoNumberValidator.validate(lottoNumber);
+                    return lottoNumber;
                 })
                 .toList();
+    }
+
+    private static int convertToInteger(String number) {
+        try {
+            return Integer.parseInt(number);
+        } catch (NumberFormatException e) {
+            throw new InvalidLottoNumberException(ErrorMessage.INVALID_LOTTO_NUMBER);
+        }
     }
 }
