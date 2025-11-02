@@ -6,7 +6,6 @@ import static lotto.exception.common.ErrorMessage.ZERO_START_NUMBER;
 
 import java.util.regex.Pattern;
 import lotto.exception.InvalidInputException;
-import lotto.exception.ZeroStartException;
 
 public class NumberInputValidator {
     private static final Pattern NUMBER_PATTERN = Pattern.compile("^-?[0-9]+$");
@@ -25,7 +24,7 @@ public class NumberInputValidator {
 
     private static void validateNotZeroStart(String input) {
         if (input.startsWith("0")) {
-            throw new ZeroStartException(ZERO_START_NUMBER);
+            throw new InvalidInputException(ZERO_START_NUMBER);
         }
     }
 

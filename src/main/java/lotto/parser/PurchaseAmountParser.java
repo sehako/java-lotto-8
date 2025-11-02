@@ -4,8 +4,7 @@ import static lotto.exception.common.ErrorMessage.INVALID_PURCHASE_PRICE;
 import static lotto.exception.common.ErrorMessage.INVALID_PURCHASE_PRICE_RANGE;
 import static lotto.exception.common.ErrorMessage.MAXIMUM_PURCHASE_PRICE_OVER;
 
-import lotto.exception.InvalidPurchaseAmountException;
-import lotto.exception.MaximumPurchaseException;
+import lotto.exception.PurchaseAmountException;
 import lotto.validator.NumberInputValidator;
 
 public class PurchaseAmountParser {
@@ -18,7 +17,7 @@ public class PurchaseAmountParser {
         int purchaseAmount = convertToInteger(input);
 
         if (!isValidPurchasePrice(purchaseAmount)) {
-            throw new InvalidPurchaseAmountException(INVALID_PURCHASE_PRICE);
+            throw new PurchaseAmountException(INVALID_PURCHASE_PRICE);
         }
 
         return purchaseAmount;
@@ -29,12 +28,12 @@ public class PurchaseAmountParser {
             int purchaseAmount = Integer.parseInt(input);
 
             if (purchaseAmount > MAX_PURCHASE_PRICE) {
-                throw new MaximumPurchaseException(MAXIMUM_PURCHASE_PRICE_OVER);
+                throw new PurchaseAmountException(MAXIMUM_PURCHASE_PRICE_OVER);
             }
 
             return purchaseAmount;
         } catch (NumberFormatException e) {
-            throw new InvalidPurchaseAmountException(INVALID_PURCHASE_PRICE_RANGE);
+            throw new PurchaseAmountException(INVALID_PURCHASE_PRICE_RANGE);
         }
     }
 
