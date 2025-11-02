@@ -1,9 +1,11 @@
 package lotto;
 
+import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.Lottos;
 import lotto.dto.LottoPurchaseInformation;
 import lotto.parser.PurchaseInformationParser;
+import lotto.parser.WinningLottoParser;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -25,11 +27,12 @@ public class LottoController {
     public void start() {
         LottoPurchaseInformation purchaseInformation = inputPurchaseAmount();
         Lottos lottos = issueLottos(purchaseInformation);
-        String winningNumbers = inputWinningNumbers();
+        Lotto winningNumbers = inputWinningNumbers();
     }
 
-    private String inputWinningNumbers() {
-        return inputView.inputWinningNumbers();
+    private Lotto inputWinningNumbers() {
+        String winningNumberInput = inputView.inputWinningNumbers();
+        return WinningLottoParser.parse(winningNumberInput);
     }
 
     private Lottos issueLottos(LottoPurchaseInformation purchaseInformation) {
