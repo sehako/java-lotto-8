@@ -29,12 +29,12 @@ public class LottoController {
     public void run() {
         LottoPurchaseInformation purchaseInformation = inputPurchaseAmount();
         Lottos lottos = issueLottos(purchaseInformation);
-        Lotto winningNumbers = inputWinningNumbers();
-        WinningLottoInformation bonusNumber = inputBonusNumber(winningNumbers);
+        Lotto winningLotto = inputWinningNumbers();
+        WinningLottoInformation bonusNumber = inputBonusNumber(winningLotto);
     }
 
     private Lottos issueLottos(LottoPurchaseInformation purchaseInformation) {
-        Lottos lottos = lottoMachine.issueLottery(purchaseInformation.amount());
+        Lottos lottos = lottoMachine.issueLottos(purchaseInformation.amount());
         outputView.printLottoIssueResult(lottos);
         return lottos;
     }
@@ -61,12 +61,12 @@ public class LottoController {
         }
     }
 
-    private WinningLottoInformation inputBonusNumber(Lotto winningNumbers) {
+    private WinningLottoInformation inputBonusNumber(Lotto winningLotto) {
         while (true) {
             try {
                 String bonusNumberInput = inputView.inputBonusNumber();
                 int bonusNumber = BonusNumberParser.parse(bonusNumberInput);
-                return WinningLottoInformation.of(winningNumbers, bonusNumber);
+                return WinningLottoInformation.of(winningLotto, bonusNumber);
             } catch (IllegalArgumentException error) {
                 outputView.printExceptionMessage(error);
             }
