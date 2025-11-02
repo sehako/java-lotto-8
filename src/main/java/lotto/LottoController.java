@@ -31,8 +31,14 @@ public class LottoController {
     }
 
     private Lotto inputWinningNumbers() {
-        String winningNumberInput = inputView.inputWinningNumbers();
-        return WinningLottoParser.parse(winningNumberInput);
+        while (true) {
+            try {
+                String winningNumberInput = inputView.inputWinningNumbers();
+                return WinningLottoParser.parse(winningNumberInput);
+            } catch (IllegalArgumentException error) {
+                outputView.printExceptionMessage(error);
+            }
+        }
     }
 
     private Lottos issueLottos(LottoPurchaseInformation purchaseInformation) {
