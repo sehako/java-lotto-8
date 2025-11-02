@@ -24,7 +24,14 @@ public class LottoController {
 
     public void start() {
         LottoPurchaseInformation purchaseInformation = inputPurchaseAmount();
+        Lottos lottos = issueLottos(purchaseInformation);
+
+    }
+
+    private Lottos issueLottos(LottoPurchaseInformation purchaseInformation) {
         Lottos lottos = lottoMachine.issueLottery(purchaseInformation.amount());
+        outputView.printLottoIssueResult(lottos);
+        return lottos;
     }
 
     private LottoPurchaseInformation inputPurchaseAmount() {
