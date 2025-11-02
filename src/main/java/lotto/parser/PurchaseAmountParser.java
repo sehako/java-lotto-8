@@ -1,6 +1,7 @@
 package lotto.parser;
 
 import static lotto.exception.common.ErrorMessage.INVALID_PURCHASE_PRICE;
+import static lotto.exception.common.ErrorMessage.INVALID_PURCHASE_PRICE_RANGE;
 import static lotto.exception.common.ErrorMessage.MAXIMUM_PURCHASE_PRICE_OVER;
 
 import lotto.exception.InvalidPurchaseAmountException;
@@ -33,7 +34,7 @@ public class PurchaseAmountParser {
 
             return purchaseAmount;
         } catch (NumberFormatException e) {
-            throw new MaximumPurchaseException(MAXIMUM_PURCHASE_PRICE_OVER);
+            throw new InvalidPurchaseAmountException(INVALID_PURCHASE_PRICE_RANGE);
         }
     }
 

@@ -1,7 +1,5 @@
 package lotto.parser;
 
-import lotto.exception.InvalidPurchaseAmountException;
-import lotto.exception.MaximumPurchaseException;
 import lotto.exception.common.ErrorMessage;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -19,11 +17,7 @@ class PurchaseAmountParserTest {
         // when
         // then
 
-        testExceptionThrownBy(
-                input,
-                InvalidPurchaseAmountException.class,
-                ErrorMessage.INVALID_PURCHASE_PRICE
-        );
+        testExceptionThrownBy(input, ErrorMessage.INVALID_PURCHASE_PRICE);
     }
 
     @Test
@@ -34,17 +28,22 @@ class PurchaseAmountParserTest {
 
         // when
         // then
-        testExceptionThrownBy(
-                input,
-                MaximumPurchaseException.class,
-                ErrorMessage.MAXIMUM_PURCHASE_PRICE_OVER
-        );
+        testExceptionThrownBy(input, ErrorMessage.MAXIMUM_PURCHASE_PRICE_OVER);
     }
 
-    private void testExceptionThrownBy(String input, Class<? extends IllegalArgumentException> c,
-                                       ErrorMessage errorMessage) {
+    @Test
+    @DisplayName("사용자가 int 범위를 초과한 구입금액을 입력하면 오류가 발생한다.")
+    public void invalidPurchaseRangeTest() {
+        // given
+        String input = "2147483648";
+        // when
+        // then
+        testExceptionThrownBy(input, ErrorMessage.INVALID_PURCHASE_PRICE_RANGE);
+    }
+
+    private void testExceptionThrownBy(String input, ErrorMessage errorMessage) {
         Assertions.assertThatThrownBy(() -> PurchaseAmountParser.parse(input))
-                .isInstanceOf(c)
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(errorMessage.getMessage());
     }
 }
