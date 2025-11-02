@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.LottoMachine;
 import lotto.view.ConsoleInputView;
 import lotto.view.ConsoleOutputView;
 import lotto.view.InputView;
@@ -9,7 +10,8 @@ public class Application {
     public static void main(String[] args) {
         InputView inputView = new ConsoleInputView();
         OutputView outputView = new ConsoleOutputView();
-        LottoController lottoController = new LottoController(inputView, outputView);
+        LottoMachine lottoMachine = new LottoMachine();
+        LottoController lottoController = new LottoController(inputView, outputView, lottoMachine);
 
         lottoController.start();
     }
