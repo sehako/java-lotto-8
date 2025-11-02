@@ -28,9 +28,9 @@ public class LottoController {
 
     public void run() {
         LottoPurchaseInformation purchaseInformation = inputPurchaseAmount();
-        Lottos lottos = issueLottos(purchaseInformation);
+        Lottos issuedLottos = issueLottos(purchaseInformation);
         Lotto winningLotto = inputWinningNumbers();
-        WinningLottoInformation bonusNumber = inputBonusNumber(winningLotto);
+        WinningLottoInformation winningLottoInformation = inputBonusNumber(winningLotto);
     }
 
     private Lottos issueLottos(LottoPurchaseInformation purchaseInformation) {
