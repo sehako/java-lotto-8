@@ -28,6 +28,7 @@ public class LottoController {
         LottoPurchaseInformation purchaseInformation = inputPurchaseAmount();
         Lottos lottos = issueLottos(purchaseInformation);
         Lotto winningNumbers = inputWinningNumbers();
+        String bonusNumber = inputBonusNumber();
     }
 
     private LottoPurchaseInformation inputPurchaseAmount() {
@@ -56,5 +57,9 @@ public class LottoController {
                 outputView.printExceptionMessage(error);
             }
         }
+    }
+
+    private String inputBonusNumber() {
+        return inputView.inputBonusNumber();
     }
 }
