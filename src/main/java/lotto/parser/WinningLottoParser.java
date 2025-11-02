@@ -2,14 +2,15 @@ package lotto.parser;
 
 import java.util.List;
 import lotto.domain.Lotto;
+import lotto.validator.NumberInputValidator;
 
 public class WinningLottoParser {
     private static final String WINNING_NUMBER_DELIMITER = ",";
 
-    public static Lotto parse(String winningNumbers) {
-        List<String> winningNumberList = splitWinningNumbers(winningNumbers);
+    public static Lotto parse(String winningNumberInput) {
+        List<Integer> winningNumbers = convertToIntegerList(splitWinningNumbers(winningNumberInput));
 
-        return new Lotto(convertToIntegerList(winningNumberList));
+        return new Lotto(winningNumbers);
     }
 
     private static List<String> splitWinningNumbers(String winningNumbers) {
@@ -18,7 +19,10 @@ public class WinningLottoParser {
 
     private static List<Integer> convertToIntegerList(List<String> winningNumberList) {
         return winningNumberList.stream()
-                .map(Integer::parseInt)
+                .map(number -> {
+                    NumberInputValidator.validate(number);
+                    return Integer.parseInt(number);
+                })
                 .toList();
     }
 }
