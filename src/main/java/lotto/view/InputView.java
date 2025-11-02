@@ -1,5 +1,5 @@
 package lotto.view;
 
 public interface InputView {
-    String inputPurchaseAmount();
+    String inputPurchasePrice();
 }

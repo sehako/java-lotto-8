@@ -3,7 +3,7 @@ package lotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.Lottos;
 import lotto.dto.LottoPurchaseInformation;
-import lotto.parser.PurchaseAmountParser;
+import lotto.parser.PurchaseInformationParser;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -29,9 +29,9 @@ public class LottoController {
 
     private LottoPurchaseInformation inputPurchaseAmount() {
         while (true) {
-            String purchaseAmount = inputView.inputPurchaseAmount();
+            String purchasePrice = inputView.inputPurchasePrice();
             try {
-                return PurchaseAmountParser.parse(purchaseAmount);
+                return PurchaseInformationParser.parse(purchasePrice);
             } catch (IllegalArgumentException error) {
                 outputView.printExceptionMessage(error);
             }

@@ -7,7 +7,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class ConsoleInputView implements InputView {
 
     @Override
-    public String inputPurchaseAmount() {
+    public String inputPurchasePrice() {
         System.out.println(PURCHASE_AMOUNT_INPUT_GUIDE);
         return Console.readLine();
     }

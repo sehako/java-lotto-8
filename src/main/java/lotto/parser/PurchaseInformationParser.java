@@ -8,7 +8,7 @@ import lotto.dto.LottoPurchaseInformation;
 import lotto.exception.PurchaseAmountException;
 import lotto.validator.NumberInputValidator;
 
-public class PurchaseAmountParser {
+public class PurchaseInformationParser {
     private static final int BASIC_PURCHASE_PRICE = 1000;
     private static final int MAX_PURCHASE_PRICE = 2_000_000_000;
 

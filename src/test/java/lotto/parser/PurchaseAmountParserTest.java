@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class PurchaseAmountParserTest {
+class PurchaseInformationParserTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"1001", "999"})
@@ -42,7 +42,7 @@ class PurchaseAmountParserTest {
     }
 
     private void testExceptionThrownBy(String input, ErrorMessage errorMessage) {
-        Assertions.assertThatThrownBy(() -> PurchaseAmountParser.parse(input))
+        Assertions.assertThatThrownBy(() -> PurchaseInformationParser.parse(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(errorMessage.getMessage());
     }
