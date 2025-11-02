@@ -9,7 +9,7 @@ public enum ErrorMessage {
     INVALID_PURCHASE_PRICE_RANGE("구매금액은 1000부터 20억 사이의 금액을 입력해주세요."),
     NOT_SIX_LOTTO_NUMBERS("로또 번호는 6개여야 합니다."),
     INVALID_LOTTO_NUMBER("1에서 45 사이의 숫자만 입력 가능합니다."),
-    ;
+    LOTTO_NUMBER_DUPLICATION("당첨 번호는 중복될 수 없습니다.");
 
     private static final String ERROR_MESSAGE_FORMAT = "[ERROR] %s";
 
