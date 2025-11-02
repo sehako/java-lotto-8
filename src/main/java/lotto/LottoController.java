@@ -62,8 +62,14 @@ public class LottoController {
     }
 
     private WinningLottoInformation inputBonusNumber(Lotto winningNumbers) {
-        String bonusNumberInput = inputView.inputBonusNumber();
-        int bonusNumber = BonusNumberParser.parse(bonusNumberInput);
-        return WinningLottoInformation.of(winningNumbers, bonusNumber);
+        while (true) {
+            try {
+                String bonusNumberInput = inputView.inputBonusNumber();
+                int bonusNumber = BonusNumberParser.parse(bonusNumberInput);
+                return WinningLottoInformation.of(winningNumbers, bonusNumber);
+            } catch (IllegalArgumentException error) {
+                outputView.printExceptionMessage(error);
+            }
+        }
     }
 }
