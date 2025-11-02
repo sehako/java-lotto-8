@@ -5,7 +5,6 @@ import lotto.domain.Lotto;
 import lotto.exception.InvalidLottoNumberException;
 import lotto.exception.common.ErrorMessage;
 import lotto.validator.LottoNumberValidator;
-import lotto.validator.NumberInputValidator;
 
 public class WinningLottoParser {
     private static final String WINNING_NUMBER_DELIMITER = ",";
@@ -23,7 +22,7 @@ public class WinningLottoParser {
     private static List<Integer> convertToIntegerList(List<String> winningNumberList) {
         return winningNumberList.stream()
                 .map(number -> {
-                    NumberInputValidator.validate(number);
+                    number = number.trim();
                     int lottoNumber = convertToInteger(number);
                     LottoNumberValidator.validate(lottoNumber);
                     return lottoNumber;
