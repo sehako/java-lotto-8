@@ -4,6 +4,7 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.Lottos;
 import lotto.dto.LottoPurchaseInformation;
+import lotto.parser.BonusNumberParser;
 import lotto.parser.PurchaseInformationParser;
 import lotto.parser.WinningNumberParser;
 import lotto.view.InputView;
@@ -28,7 +29,7 @@ public class LottoController {
         LottoPurchaseInformation purchaseInformation = inputPurchaseAmount();
         Lottos lottos = issueLottos(purchaseInformation);
         Lotto winningNumbers = inputWinningNumbers();
-        String bonusNumber = inputBonusNumber();
+        int bonusNumber = inputBonusNumber();
     }
 
     private LottoPurchaseInformation inputPurchaseAmount() {
@@ -59,7 +60,8 @@ public class LottoController {
         }
     }
 
-    private String inputBonusNumber() {
-        return inputView.inputBonusNumber();
+    private int inputBonusNumber() {
+        String bonusNumberInput = inputView.inputBonusNumber();
+        return BonusNumberParser.parse(bonusNumberInput);
     }
 }
