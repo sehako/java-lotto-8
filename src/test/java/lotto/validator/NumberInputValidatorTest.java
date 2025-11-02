@@ -1,6 +1,7 @@
 package lotto.validator;
 
 import static lotto.exception.common.ErrorMessage.INVALID_INPUT;
+import static lotto.exception.common.ErrorMessage.NEGATIVE_NUMBER;
 import static lotto.exception.common.ErrorMessage.ZERO_START_NUMBER;
 
 import lotto.exception.common.ErrorMessage;
@@ -32,6 +33,17 @@ class NumberInputValidatorTest {
         // when
         // then
         testExceptionThrownBy(input, ZERO_START_NUMBER);
+    }
+
+    @Test
+    @DisplayName("사용자가 음수를 입력하면 오류가 발생한다.")
+    public void negativeInputTest() {
+        // given
+        String input = "-12345";
+
+        // when
+        // then
+        testExceptionThrownBy(input, NEGATIVE_NUMBER);
     }
 
     private void testExceptionThrownBy(String input, ErrorMessage errorMessage) {

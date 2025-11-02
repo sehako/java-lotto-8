@@ -1,6 +1,7 @@
 package lotto.validator;
 
 import static lotto.exception.common.ErrorMessage.INVALID_INPUT;
+import static lotto.exception.common.ErrorMessage.NEGATIVE_NUMBER;
 import static lotto.exception.common.ErrorMessage.ZERO_START_NUMBER;
 
 import java.util.regex.Pattern;
@@ -8,11 +9,12 @@ import lotto.exception.InvalidInputException;
 import lotto.exception.ZeroStartException;
 
 public class NumberInputValidator {
-    private static final Pattern NUMBER_PATTERN = Pattern.compile("^[0-9]+$");
+    private static final Pattern NUMBER_PATTERN = Pattern.compile("^-?[0-9]+$");
 
     public static void validate(String input) {
         validateNumber(input);
         validateNotZeroStart(input);
+        validatePositiveNumber(input);
     }
 
     private static void validateNumber(String input) {
@@ -24,6 +26,12 @@ public class NumberInputValidator {
     private static void validateNotZeroStart(String input) {
         if (input.startsWith("0")) {
             throw new ZeroStartException(ZERO_START_NUMBER);
+        }
+    }
+
+    private static void validatePositiveNumber(String input) {
+        if (input.startsWith("-")) {
+            throw new InvalidInputException(NEGATIVE_NUMBER);
         }
     }
 
