@@ -33,6 +33,12 @@ public class LottoController {
         WinningLottoInformation bonusNumber = inputBonusNumber(winningNumbers);
     }
 
+    private Lottos issueLottos(LottoPurchaseInformation purchaseInformation) {
+        Lottos lottos = lottoMachine.issueLottery(purchaseInformation.amount());
+        outputView.printLottoIssueResult(lottos);
+        return lottos;
+    }
+
     private LottoPurchaseInformation inputPurchaseAmount() {
         while (true) {
             String purchasePrice = inputView.inputPurchasePrice();
@@ -42,12 +48,6 @@ public class LottoController {
                 outputView.printExceptionMessage(error);
             }
         }
-    }
-
-    private Lottos issueLottos(LottoPurchaseInformation purchaseInformation) {
-        Lottos lottos = lottoMachine.issueLottery(purchaseInformation.amount());
-        outputView.printLottoIssueResult(lottos);
-        return lottos;
     }
 
     private Lotto inputWinningNumbers() {
