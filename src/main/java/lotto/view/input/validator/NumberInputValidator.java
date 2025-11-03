@@ -9,6 +9,8 @@ import lotto.exception.InvalidInputException;
 
 public class NumberInputValidator {
     private static final Pattern NUMBER_PATTERN = Pattern.compile("^-?[0-9]+$");
+    private static final String ZERO = "0";
+    private static final String MINUS_SIGN = "-";
 
     public static void validate(String input) {
         validateNumber(input);
@@ -17,24 +19,24 @@ public class NumberInputValidator {
     }
 
     private static void validateNumber(String input) {
-        if (isNotNumber(input)) {
+        if (!isNumber(input)) {
             throw new InvalidInputException(INVALID_INPUT);
         }
     }
 
     private static void validateNotZeroStart(String input) {
-        if (input.startsWith("0")) {
+        if (input.startsWith(ZERO)) {
             throw new InvalidInputException(ZERO_START_NUMBER);
         }
     }
 
     private static void validatePositiveNumber(String input) {
-        if (input.startsWith("-")) {
+        if (input.startsWith(MINUS_SIGN)) {
             throw new InvalidInputException(NEGATIVE_NUMBER);
         }
     }
 
-    private static boolean isNotNumber(String input) {
-        return !NUMBER_PATTERN.matcher(input).matches();
+    private static boolean isNumber(String input) {
+        return input != null && NUMBER_PATTERN.matcher(input).matches();
     }
 }
