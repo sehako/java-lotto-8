@@ -3,9 +3,9 @@ package lotto.application;
 import java.util.EnumMap;
 import java.util.Map;
 import lotto.domain.Lotto;
+import lotto.domain.LottoCount;
 import lotto.domain.LottoRank;
 import lotto.domain.Lottos;
-import lotto.dto.LottoPurchaseInformation;
 import lotto.dto.WinningLottoInformation;
 import lotto.dto.request.LottoCalculationRequest;
 import lotto.dto.response.LottoCalculationResponse;
@@ -23,7 +23,7 @@ public class WinningStatistics {
     ) {
         Lottos issuedLottos = request.issuedLotto();
         WinningLottoInformation winningLottoInformation = request.winningLottoInformation();
-        LottoPurchaseInformation purchaseInformation = request.purchaseInformation();
+        LottoCount lottoCount = request.lottoCount();
         Lotto winningLotto = winningLottoInformation.winningLotto();
         int bonusNumber = winningLottoInformation.bonusNumber();
 
@@ -33,7 +33,7 @@ public class WinningStatistics {
             writeWinningStatistics(rank, statistics);
         }
 
-        return calculate(statistics, purchaseInformation);
+        return calculate(statistics, lottoCount);
     }
 
     private Map<LottoRank, Long> newStatistics() {
@@ -55,10 +55,10 @@ public class WinningStatistics {
 
     private LottoCalculationResponse calculate(
             Map<LottoRank, Long> statistics,
-            LottoPurchaseInformation purchaseInformation
+            LottoCount lottoCount
     ) {
         long totalReward = getTotalReward(statistics);
-        double returnRate = ((double) totalReward / purchaseInformation.price()) * PERCENT_RATE;
+        double returnRate = ((double) totalReward / lottoCount.purchasePrice()) * PERCENT_RATE;
         returnRate = Math.round(returnRate * SCALE_FACTOR) / (double) SCALE_FACTOR;
 
         return LottoCalculationResponse.of(statistics, returnRate);

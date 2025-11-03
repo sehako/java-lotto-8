@@ -4,18 +4,18 @@ import static lotto.domain.common.ErrorMessage.INVALID_PURCHASE_PRICE;
 import static lotto.domain.common.ErrorMessage.INVALID_PURCHASE_PRICE_RANGE;
 import static lotto.domain.common.ErrorMessage.MAXIMUM_PURCHASE_PRICE_OVER;
 
-import lotto.dto.LottoPurchaseInformation;
+import lotto.domain.LottoCount;
 import lotto.view.input.validator.NumberInputValidator;
 
-public class PurchaseInformationParser {
+public class LottoCountParser {
     private static final int BASIC_PURCHASE_PRICE = 1000;
     private static final int MAX_PURCHASE_PRICE = 2_000_000_000;
 
-    private PurchaseInformationParser() {
+    private LottoCountParser() {
         throw new IllegalStateException("Utility class");
     }
 
-    public static LottoPurchaseInformation parse(String input) {
+    public static LottoCount parse(String input) {
         NumberInputValidator.validate(input);
 
         int purchaseAmount = convertToInteger(input);
@@ -24,7 +24,7 @@ public class PurchaseInformationParser {
             throw new IllegalArgumentException(INVALID_PURCHASE_PRICE.getMessage());
         }
 
-        return LottoPurchaseInformation.of(purchaseAmount);
+        return LottoCount.of(purchaseAmount);
     }
 
     private static int convertToInteger(String input) {

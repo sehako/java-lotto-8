@@ -9,8 +9,8 @@ import static lotto.domain.LottoRank.THIRD;
 import java.util.List;
 import java.util.Map;
 import lotto.domain.Lotto;
+import lotto.domain.LottoCount;
 import lotto.domain.Lottos;
-import lotto.dto.LottoPurchaseInformation;
 import lotto.dto.WinningLottoInformation;
 import lotto.dto.request.LottoCalculationRequest;
 import lotto.dto.response.LottoCalculationResponse;
@@ -25,7 +25,7 @@ class WinningStatisticsTest {
     @DisplayName("발급한 로또와 당첨 번호 및 보너스 번호를 비교하여 통계를 계산한다.")
     public void lottoStatisticTest() {
         // given
-        LottoPurchaseInformation information = LottoPurchaseInformation.of(8000);
+        LottoCount lottoCount = LottoCount.of(8000);
         List<Lotto> lottos = List.of(
                 new Lotto(List.of(8, 21, 23, 41, 42, 43)),
                 new Lotto(List.of(3, 5, 11, 16, 32, 38)),
@@ -45,7 +45,7 @@ class WinningStatisticsTest {
 
         // when
         LottoCalculationResponse response = winningStatistics.calculateWinningStatistics(
-                LottoCalculationRequest.of(information, issuedLottos, winningLottoInformation)
+                LottoCalculationRequest.of(lottoCount, issuedLottos, winningLottoInformation)
         );
 
         // then

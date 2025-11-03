@@ -3,14 +3,14 @@ package lotto.presentation;
 import lotto.application.LottoMachine;
 import lotto.application.WinningStatistics;
 import lotto.domain.Lotto;
+import lotto.domain.LottoCount;
 import lotto.domain.Lottos;
-import lotto.dto.LottoPurchaseInformation;
 import lotto.dto.WinningLottoInformation;
 import lotto.dto.request.LottoCalculationRequest;
 import lotto.dto.response.LottoCalculationResponse;
 import lotto.view.input.InputView;
 import lotto.view.input.parser.BonusNumberParser;
-import lotto.view.input.parser.PurchaseInformationParser;
+import lotto.view.input.parser.LottoCountParser;
 import lotto.view.input.parser.WinningNumberParser;
 import lotto.view.output.OutputView;
 
@@ -33,7 +33,7 @@ public class LottoController {
     }
 
     public void run() {
-        LottoPurchaseInformation purchaseInformation = inputPurchaseAmount();
+        LottoCount purchaseInformation = inputPurchaseAmount();
         Lottos issuedLottos = issueLottos(purchaseInformation);
         Lotto winningLotto = inputWinningNumbers();
         WinningLottoInformation winningLottoInformation = inputBonusNumber(winningLotto);
@@ -49,26 +49,26 @@ public class LottoController {
     }
 
     private LottoCalculationResponse calculateWinningStatistics(
-            LottoPurchaseInformation purchaseInformation,
+            LottoCount lottoCount,
             Lottos issuedLottos,
             WinningLottoInformation winningLottoInformation
     ) {
         return winningStatistics.calculateWinningStatistics(
-                LottoCalculationRequest.of(purchaseInformation, issuedLottos, winningLottoInformation)
+                LottoCalculationRequest.of(lottoCount, issuedLottos, winningLottoInformation)
         );
     }
 
-    private Lottos issueLottos(LottoPurchaseInformation purchaseInformation) {
-        Lottos lottos = lottoMachine.issueLottos(purchaseInformation.amount());
+    private Lottos issueLottos(LottoCount lottoCount) {
+        Lottos lottos = lottoMachine.issueLottos(lottoCount.amount());
         outputView.printLottoIssueResult(lottos);
         return lottos;
     }
 
-    private LottoPurchaseInformation inputPurchaseAmount() {
+    private LottoCount inputPurchaseAmount() {
         while (true) {
             String purchasePrice = inputView.inputPurchasePrice();
             try {
-                return PurchaseInformationParser.parse(purchasePrice);
+                return LottoCountParser.parse(purchasePrice);
             } catch (IllegalArgumentException error) {
                 outputView.printExceptionMessage(error);
             }

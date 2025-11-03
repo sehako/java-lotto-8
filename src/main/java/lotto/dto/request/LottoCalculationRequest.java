@@ -1,19 +1,19 @@
 package lotto.dto.request;
 
+import lotto.domain.LottoCount;
 import lotto.domain.Lottos;
-import lotto.dto.LottoPurchaseInformation;
 import lotto.dto.WinningLottoInformation;
 
 public record LottoCalculationRequest(
-        LottoPurchaseInformation purchaseInformation,
+        LottoCount lottoCount,
         Lottos issuedLotto,
         WinningLottoInformation winningLottoInformation
 ) {
     public static LottoCalculationRequest of(
-            LottoPurchaseInformation purchaseInformation,
+            LottoCount lottoCount,
             Lottos issuedLotto,
             WinningLottoInformation winningLottoInformation
     ) {
-        return new LottoCalculationRequest(purchaseInformation, issuedLotto, winningLottoInformation);
+        return new LottoCalculationRequest(lottoCount, issuedLotto, winningLottoInformation);
     }
 }
