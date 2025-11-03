@@ -11,7 +11,8 @@ import lotto.dto.request.LottoCalculationRequest;
 import lotto.dto.response.LottoCalculationResponse;
 
 public class WinningStatistics {
-    private static final double PERCENTAGE_NUMBER = 100.0;
+    private static final double PERCENT_RATE = 100.0;
+    private static final int SCALE_FACTOR = 10;
 
     private static boolean hasWinningMatch(LottoRank rank) {
         return rank != null;
@@ -57,8 +58,8 @@ public class WinningStatistics {
             LottoPurchaseInformation purchaseInformation
     ) {
         long totalReward = getTotalReward(statistics);
-        double returnRate = ((double) totalReward / purchaseInformation.price()) * PERCENTAGE_NUMBER;
-        returnRate = Math.round(returnRate * 10) / 10.0;
+        double returnRate = ((double) totalReward / purchaseInformation.price()) * PERCENT_RATE;
+        returnRate = Math.round(returnRate * SCALE_FACTOR) / (double) SCALE_FACTOR;
 
         return LottoCalculationResponse.of(statistics, returnRate);
     }
