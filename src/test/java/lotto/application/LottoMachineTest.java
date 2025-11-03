@@ -18,6 +18,6 @@ class LottoMachineTest {
         // when
         Lottos lottos = lottoMachine.issueLottos(purchaseAmount / 1000);
         // then
-        Assertions.assertThat(lottos.lottoList()).hasSize(6);
+        Assertions.assertThat(lottos.issuedLottos()).hasSize(6);
     }
 }

@@ -23,7 +23,7 @@ public class WinningStatistics {
         int bonusNumber = winningLottoInformation.bonusNumber();
 
         Map<LottoRank, Long> statistics = newStatistics();
-        for (Lotto lotto : issuedLottos.lottoList()) {
+        for (Lotto lotto : issuedLottos.issuedLottos()) {
             LottoRank rank = lotto.matchRank(winningLotto, bonusNumber);
             writeWinningStatistics(rank, statistics);
         }

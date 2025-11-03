@@ -26,8 +26,8 @@ public class ConsoleOutputView implements OutputView {
         String totalLottoCount = String.format(LOTTO_ISSUE_COUNT_FORMAT, lottos.getAmount());
         System.out.println(totalLottoCount);
 
-        for (Lotto lotto : lottos.lottoList()) {
-            String lottoNumber = String.format(LOTTO_NUMBER_FORMAT, lotto.getNumbersAsString());
+        for (Lotto issuedLotto : lottos.issuedLottos()) {
+            String lottoNumber = String.format(LOTTO_NUMBER_FORMAT, issuedLotto.getNumbersAsString());
             System.out.println(lottoNumber);
         }
 
