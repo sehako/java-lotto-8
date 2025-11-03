@@ -4,15 +4,18 @@ import java.util.EnumMap;
 import java.util.Map;
 import lotto.dto.LottoCalculationRequest;
 import lotto.dto.LottoCalculationResponse;
+import lotto.dto.LottoPurchaseInformation;
 import lotto.dto.WinningLottoInformation;
 
 public class WinningStatistics {
+    private static final double PERCENTAGE_NUMBER = 100.0;
 
     public LottoCalculationResponse calculateWinningStatistics(
             LottoCalculationRequest request
     ) {
         Lottos issuedLottos = request.issuedLotto();
         WinningLottoInformation winningLottoInformation = request.winningLottoInformation();
+        LottoPurchaseInformation purchaseInformation = request.purchaseInformation();
         Lotto winningLotto = winningLottoInformation.winningLotto();
         int bonusNumber = winningLottoInformation.bonusNumber();
 
@@ -22,7 +25,7 @@ public class WinningStatistics {
             writeWinningStatistics(rank, statistics);
         }
 
-        return LottoCalculationResponse.of(statistics);
+        return calculate(statistics, purchaseInformation);
     }
 
     private void writeWinningStatistics(LottoRank rank, Map<LottoRank, Long> statistics) {
@@ -30,6 +33,23 @@ public class WinningStatistics {
             return;
         }
 
-        statistics.merge(rank, rank.getReward(), Long::sum);
+        statistics.merge(rank, 1L, Long::sum);
+    }
+
+    private LottoCalculationResponse calculate(
+            Map<LottoRank, Long> statistics,
+            LottoPurchaseInformation purchaseInformation
+    ) {
+        long totalReward = getTotalReward(statistics);
+        double returnRate = ((double) totalReward / purchaseInformation.price()) * PERCENTAGE_NUMBER;
+        returnRate = Math.round(returnRate * 10) / 10.0;
+
+        return LottoCalculationResponse.of(statistics, returnRate);
+    }
+
+    private long getTotalReward(Map<LottoRank, Long> statistics) {
+        return statistics.entrySet().stream()
+                .mapToLong(entry -> entry.getKey().getReward() * entry.getValue())
+                .sum();
     }
 }

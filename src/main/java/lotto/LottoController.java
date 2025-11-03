@@ -38,17 +38,21 @@ public class LottoController {
         Lotto winningLotto = inputWinningNumbers();
         WinningLottoInformation winningLottoInformation = inputBonusNumber(winningLotto);
 
-        LottoCalculationResponse calculationResult = calculateWinningStatistics(issuedLottos,
-                winningLottoInformation);
+        LottoCalculationResponse calculationResult = calculateWinningStatistics(
+                purchaseInformation,
+                issuedLottos,
+                winningLottoInformation
+        );
 
     }
 
     private LottoCalculationResponse calculateWinningStatistics(
+            LottoPurchaseInformation purchaseInformation,
             Lottos issuedLottos,
             WinningLottoInformation winningLottoInformation
     ) {
         return winningStatistics.calculateWinningStatistics(
-                LottoCalculationRequest.of(issuedLottos, winningLottoInformation)
+                LottoCalculationRequest.of(purchaseInformation, issuedLottos, winningLottoInformation)
         );
     }
 
