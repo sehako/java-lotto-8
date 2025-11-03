@@ -39,7 +39,7 @@ class LottoTest {
         // then
         Assertions.assertThatThrownBy(() -> new Lotto(lottoNumber))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorMessage.INVALID_LOTTO_NUMBER.getMessage());
+                .hasMessage(ErrorMessage.INVALID_LOTTO_NUMBER_RANGE.getMessage());
     }
 
 }

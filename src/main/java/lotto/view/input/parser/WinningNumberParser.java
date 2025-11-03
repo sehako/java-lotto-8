@@ -1,6 +1,6 @@
 package lotto.view.input.parser;
 
-import static lotto.domain.common.ErrorMessage.INVALID_LOTTO_NUMBER;
+import static lotto.domain.common.ErrorMessage.INVALID_LOTTO_NUMBER_RANGE;
 
 import java.util.List;
 import lotto.domain.Lotto;
@@ -32,7 +32,7 @@ public class WinningNumberParser {
         try {
             return Integer.parseInt(number);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(INVALID_LOTTO_NUMBER.getMessage());
+            throw new IllegalArgumentException(INVALID_LOTTO_NUMBER_RANGE.getMessage());
         }
     }
 }

@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import static lotto.domain.common.ErrorMessage.INVALID_LOTTO_NUMBER;
+import static lotto.domain.common.ErrorMessage.INVALID_LOTTO_NUMBER_RANGE;
 import static lotto.domain.common.ErrorMessage.LOTTO_NUMBER_DUPLICATION;
 
 import java.util.HashSet;
@@ -28,14 +28,14 @@ public class Lotto {
     private static void validateLottoNumberRange(List<Integer> numbers) {
         numbers.forEach(number -> {
             if (LOTTO_START_NUMBER > number || number > LOTTO_END_NUMBER) {
-                throw new IllegalArgumentException(INVALID_LOTTO_NUMBER.getMessage());
+                throw new IllegalArgumentException(INVALID_LOTTO_NUMBER_RANGE.getMessage());
             }
         });
     }
 
     private void validateLottoNumberCount(List<Integer> numbers) {
         if (numbers.size() != LOTTO_NUMBER_COUNT) {
-            throw new IllegalArgumentException(INVALID_LOTTO_NUMBER.getMessage());
+            throw new IllegalArgumentException(INVALID_LOTTO_NUMBER_RANGE.getMessage());
         }
     }
 

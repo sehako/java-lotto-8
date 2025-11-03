@@ -1,7 +1,7 @@
 package lotto.domain;
 
 import static lotto.domain.common.ErrorMessage.BONUS_NUMBER_DUPLICATION;
-import static lotto.domain.common.ErrorMessage.INVALID_LOTTO_NUMBER;
+import static lotto.domain.common.ErrorMessage.INVALID_LOTTO_NUMBER_RANGE;
 
 import java.util.HashSet;
 
@@ -18,7 +18,7 @@ public record WinningLottoInformation(
         }
 
         if (bonusNumber < MIN_BONUS_NUMBER || MAX_BONUS_NUMBER < bonusNumber) {
-            throw new IllegalArgumentException(INVALID_LOTTO_NUMBER.getMessage());
+            throw new IllegalArgumentException(INVALID_LOTTO_NUMBER_RANGE.getMessage());
         }
 
         return new WinningLottoInformation(winningLotto, bonusNumber);

@@ -37,6 +37,6 @@ class WinningLottoInformationTest {
         // then
         Assertions.assertThatThrownBy(() -> WinningLottoInformation.of(lotto, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorMessage.INVALID_LOTTO_NUMBER.getMessage());
+                .hasMessage(ErrorMessage.INVALID_LOTTO_NUMBER_RANGE.getMessage());
     }
 }
