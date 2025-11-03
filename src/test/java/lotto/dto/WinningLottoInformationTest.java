@@ -2,6 +2,7 @@ package lotto.dto;
 
 import java.util.List;
 import lotto.domain.Lotto;
+import lotto.domain.WinningLottoInformation;
 import lotto.domain.common.ErrorMessage;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

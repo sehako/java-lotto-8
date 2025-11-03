@@ -2,7 +2,7 @@ package lotto.dto.request;
 
 import lotto.domain.LottoCount;
 import lotto.domain.Lottos;
-import lotto.dto.WinningLottoInformation;
+import lotto.domain.WinningLottoInformation;
 
 public record LottoCalculationRequest(
         LottoCount lottoCount,

@@ -1,9 +1,8 @@
-package lotto.dto;
+package lotto.domain;
 
 import static lotto.domain.common.ErrorMessage.BONUS_NUMBER_DUPLICATION;
 
 import java.util.HashSet;
-import lotto.domain.Lotto;
 
 public record WinningLottoInformation(
         Lotto winningLotto,

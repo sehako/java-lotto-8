@@ -5,7 +5,7 @@ import lotto.application.WinningStatistics;
 import lotto.domain.Lotto;
 import lotto.domain.LottoCount;
 import lotto.domain.Lottos;
-import lotto.dto.WinningLottoInformation;
+import lotto.domain.WinningLottoInformation;
 import lotto.dto.request.LottoCalculationRequest;
 import lotto.dto.response.LottoCalculationResponse;
 import lotto.view.input.InputView;
