@@ -31,6 +31,18 @@ public class Lotto {
                 .toList();
     }
 
+    public LottoRank matchRank(Lotto lotto, int bonusNumber) {
+        int count = (int) numbers.stream()
+                .filter(lotto.numbers()::contains)
+                .count();
+
+        if (count == 5) {
+            return LottoRank.from(count, numbers.contains(bonusNumber));
+        }
+
+        return LottoRank.from(count, false);
+    }
+
     public List<Integer> numbers() {
         return List.copyOf(numbers);
     }

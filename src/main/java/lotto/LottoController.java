@@ -3,6 +3,9 @@ package lotto;
 import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.Lottos;
+import lotto.domain.WinningStatistics;
+import lotto.dto.LottoCalculationRequest;
+import lotto.dto.LottoCalculationResponse;
 import lotto.dto.LottoPurchaseInformation;
 import lotto.dto.WinningLottoInformation;
 import lotto.parser.BonusNumberParser;
@@ -15,15 +18,18 @@ public class LottoController {
     private final InputView inputView;
     private final OutputView outputView;
     private final LottoMachine lottoMachine;
+    private final WinningStatistics winningStatistics;
 
     public LottoController(
             InputView inputView,
             OutputView outputView,
-            LottoMachine lottoMachine
+            LottoMachine lottoMachine,
+            WinningStatistics winningStatistics
     ) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.lottoMachine = lottoMachine;
+        this.winningStatistics = winningStatistics;
     }
 
     public void run() {
@@ -31,6 +37,19 @@ public class LottoController {
         Lottos issuedLottos = issueLottos(purchaseInformation);
         Lotto winningLotto = inputWinningNumbers();
         WinningLottoInformation winningLottoInformation = inputBonusNumber(winningLotto);
+
+        LottoCalculationResponse calculationResult = calculateWinningStatistics(issuedLottos,
+                winningLottoInformation);
+
+    }
+
+    private LottoCalculationResponse calculateWinningStatistics(
+            Lottos issuedLottos,
+            WinningLottoInformation winningLottoInformation
+    ) {
+        return winningStatistics.calculateWinningStatistics(
+                LottoCalculationRequest.of(issuedLottos, winningLottoInformation)
+        );
     }
 
     private Lottos issueLottos(LottoPurchaseInformation purchaseInformation) {

@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domain.LottoMachine;
+import lotto.domain.WinningStatistics;
 import lotto.view.ConsoleInputView;
 import lotto.view.ConsoleOutputView;
 import lotto.view.InputView;
@@ -11,7 +12,13 @@ public class Application {
         InputView inputView = new ConsoleInputView();
         OutputView outputView = new ConsoleOutputView();
         LottoMachine lottoMachine = new LottoMachine();
-        LottoController lottoController = new LottoController(inputView, outputView, lottoMachine);
+        WinningStatistics winningStatistics = new WinningStatistics();
+        LottoController lottoController = new LottoController(
+                inputView,
+                outputView,
+                lottoMachine,
+                winningStatistics
+        );
 
         lottoController.run();
     }
