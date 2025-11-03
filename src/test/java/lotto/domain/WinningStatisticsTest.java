@@ -1,6 +1,11 @@
 package lotto.domain;
 
 import static lotto.domain.LottoRank.FIFTH;
+import static lotto.domain.LottoRank.FIRST;
+import static lotto.domain.LottoRank.FOURTH;
+import static lotto.domain.LottoRank.NONE;
+import static lotto.domain.LottoRank.SECOND;
+import static lotto.domain.LottoRank.THIRD;
 
 import java.util.List;
 import java.util.Map;
@@ -45,7 +50,12 @@ class WinningStatisticsTest {
         // then
         Assertions.assertThat(response.statistics())
                 .containsExactlyInAnyOrderEntriesOf(Map.of(
-                        FIFTH, 1L
+                        FIRST, 0L,
+                        SECOND, 0L,
+                        THIRD, 0L,
+                        FOURTH, 0L,
+                        FIFTH, 1L,
+                        NONE, 0L
                 ));
 
         Assertions.assertThat(response.returnRate()).isEqualTo(62.5);

@@ -44,6 +44,8 @@ public class LottoController {
                 winningLottoInformation
         );
 
+        outputView.printWinningStatistics(calculationResult);
+
     }
 
     private LottoCalculationResponse calculateWinningStatistics(

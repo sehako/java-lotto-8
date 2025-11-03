@@ -19,13 +19,22 @@ public class WinningStatistics {
         Lotto winningLotto = winningLottoInformation.winningLotto();
         int bonusNumber = winningLottoInformation.bonusNumber();
 
-        Map<LottoRank, Long> statistics = new EnumMap<>(LottoRank.class);
+        Map<LottoRank, Long> statistics = newStatistics();
         for (Lotto lotto : issuedLottos.lottoList()) {
             LottoRank rank = lotto.matchRank(winningLotto, bonusNumber);
             writeWinningStatistics(rank, statistics);
         }
 
         return calculate(statistics, purchaseInformation);
+    }
+
+    private Map<LottoRank, Long> newStatistics() {
+        Map<LottoRank, Long> statistics = new EnumMap<>(LottoRank.class);
+        for (LottoRank rank : LottoRank.values()) {
+            statistics.put(rank, 0L);
+        }
+
+        return statistics;
     }
 
     private void writeWinningStatistics(LottoRank rank, Map<LottoRank, Long> statistics) {
