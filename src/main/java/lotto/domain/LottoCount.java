@@ -16,12 +16,12 @@ public class LottoCount {
         amount = purchasePrice / LOTTO_PRICE;
     }
 
-    private static boolean isValidPurchasePrice(int purchasePrice) {
-        return purchasePrice >= LOTTO_PRICE && purchasePrice % LOTTO_PRICE == 0;
-    }
-
     public static LottoCount of(int purchasePrice) {
         return new LottoCount(purchasePrice);
+    }
+
+    private boolean isValidPurchasePrice(int purchasePrice) {
+        return purchasePrice >= LOTTO_PRICE && purchasePrice % LOTTO_PRICE == 0;
     }
 
     public int amount() {

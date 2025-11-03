@@ -20,19 +20,6 @@ public class Lotto {
         this.numbers = sortNumbers(numbers);
     }
 
-    private static void validateLottoNumberUnique(List<Integer> numbers) {
-        if (new HashSet<>(numbers).size() != numbers.size()) {
-            throw new IllegalArgumentException(LOTTO_NUMBER_DUPLICATION.getMessage());
-        }
-    }
-
-    private static void validateLottoNumberRange(List<Integer> numbers) {
-        numbers.forEach(number -> {
-            if (LOTTO_START_NUMBER > number || number > LOTTO_END_NUMBER) {
-                throw new IllegalArgumentException(INVALID_LOTTO_NUMBER_RANGE.getMessage());
-            }
-        });
-    }
 
     private void validate(List<Integer> numbers) {
         validateLottoNumberCount(numbers);
@@ -44,6 +31,20 @@ public class Lotto {
         if (numbers.size() != LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException(INVALID_LOTTO_NUMBER_RANGE.getMessage());
         }
+    }
+
+    private void validateLottoNumberUnique(List<Integer> numbers) {
+        if (new HashSet<>(numbers).size() != numbers.size()) {
+            throw new IllegalArgumentException(LOTTO_NUMBER_DUPLICATION.getMessage());
+        }
+    }
+
+    private void validateLottoNumberRange(List<Integer> numbers) {
+        numbers.forEach(number -> {
+            if (LOTTO_START_NUMBER > number || number > LOTTO_END_NUMBER) {
+                throw new IllegalArgumentException(INVALID_LOTTO_NUMBER_RANGE.getMessage());
+            }
+        });
     }
 
     private List<Integer> sortNumbers(List<Integer> numbers) {
