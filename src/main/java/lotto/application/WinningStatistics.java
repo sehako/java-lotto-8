@@ -11,6 +11,7 @@ import lotto.dto.request.LottoCalculationRequest;
 import lotto.dto.response.LottoCalculationResponse;
 
 public class WinningStatistics {
+
     private static final double PERCENT_RATE = 100.0;
     private static final int SCALE_FACTOR = 10;
 

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Lotto {
+
     private static final String LOTTO_NUMBER_DELIMITER = ", ";
     private static final int LOTTO_START_NUMBER = 1;
     private static final int LOTTO_END_NUMBER = 45;
@@ -33,16 +34,16 @@ public class Lotto {
         });
     }
 
-    private void validateLottoNumberCount(List<Integer> numbers) {
-        if (numbers.size() != LOTTO_NUMBER_COUNT) {
-            throw new IllegalArgumentException(INVALID_LOTTO_NUMBER_RANGE.getMessage());
-        }
-    }
-
     private void validate(List<Integer> numbers) {
         validateLottoNumberCount(numbers);
         validateLottoNumberUnique(numbers);
         validateLottoNumberRange(numbers);
+    }
+
+    private void validateLottoNumberCount(List<Integer> numbers) {
+        if (numbers.size() != LOTTO_NUMBER_COUNT) {
+            throw new IllegalArgumentException(INVALID_LOTTO_NUMBER_RANGE.getMessage());
+        }
     }
 
     private List<Integer> sortNumbers(List<Integer> numbers) {

@@ -9,6 +9,7 @@ public record WinningLottoInformation(
         Lotto winningLotto,
         int bonusNumber
 ) {
+
     private static final int MAX_BONUS_NUMBER = 45;
     private static final int MIN_BONUS_NUMBER = 1;
 

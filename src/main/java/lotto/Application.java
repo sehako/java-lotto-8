@@ -9,6 +9,7 @@ import lotto.view.output.ConsoleOutputView;
 import lotto.view.output.OutputView;
 
 public class Application {
+
     public static void main(String[] args) {
         InputView inputView = new ConsoleInputView();
         OutputView outputView = new ConsoleOutputView();

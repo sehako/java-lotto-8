@@ -3,6 +3,7 @@ package lotto.domain;
 import java.text.NumberFormat;
 
 public enum LottoRank {
+
     FIRST(2_000_000_000L, "6개 일치"),
     SECOND(30_000_000L, "5개 일치, 보너스 볼 일치"),
     THIRD(1_500_000L, "5개 일치"),

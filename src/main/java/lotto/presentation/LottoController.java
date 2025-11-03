@@ -15,6 +15,7 @@ import lotto.view.input.parser.WinningNumberParser;
 import lotto.view.output.OutputView;
 
 public class LottoController {
+
     private final InputView inputView;
     private final OutputView outputView;
     private final LottoMachine lottoMachine;

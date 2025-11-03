@@ -9,6 +9,7 @@ public record LottoCalculationRequest(
         Lottos issuedLotto,
         WinningLottoInformation winningLottoInformation
 ) {
+
     public static LottoCalculationRequest of(
             LottoCount lottoCount,
             Lottos issuedLotto,

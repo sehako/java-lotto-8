@@ -6,6 +6,7 @@ import java.util.List;
 import lotto.domain.Lotto;
 
 public class WinningNumberParser {
+
     private static final String WINNING_NUMBER_DELIMITER = ",";
 
     private WinningNumberParser() {
