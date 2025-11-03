@@ -6,6 +6,10 @@ public class LottoNumberValidator {
     private static final int LOTTO_START_NUMBER = 1;
     private static final int LOTTO_END_NUMBER = 45;
 
+    private LottoNumberValidator() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static void validate(int number) {
         if (!isValidLottoNumber(number)) {
             throw new IllegalArgumentException(INVALID_LOTTO_NUMBER.getMessage());

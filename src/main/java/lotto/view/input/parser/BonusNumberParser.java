@@ -6,6 +6,11 @@ import lotto.view.input.validator.LottoNumberValidator;
 import lotto.view.input.validator.NumberInputValidator;
 
 public class BonusNumberParser {
+
+    private BonusNumberParser() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static int parse(String bonusNumberString) {
         NumberInputValidator.validate(bonusNumberString);
         int bonusNumber = convertToInteger(bonusNumberString);

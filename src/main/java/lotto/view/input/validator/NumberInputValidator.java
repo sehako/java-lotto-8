@@ -11,6 +11,10 @@ public class NumberInputValidator {
     private static final String ZERO = "0";
     private static final String MINUS_SIGN = "-";
 
+    private NumberInputValidator() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static void validate(String input) {
         validateNumber(input);
         validateNotZeroStart(input);

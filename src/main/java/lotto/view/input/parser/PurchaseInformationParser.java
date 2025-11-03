@@ -11,6 +11,10 @@ public class PurchaseInformationParser {
     private static final int BASIC_PURCHASE_PRICE = 1000;
     private static final int MAX_PURCHASE_PRICE = 2_000_000_000;
 
+    private PurchaseInformationParser() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static LottoPurchaseInformation parse(String input) {
         NumberInputValidator.validate(input);
 

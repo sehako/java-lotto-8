@@ -9,6 +9,10 @@ import lotto.view.input.validator.LottoNumberValidator;
 public class WinningNumberParser {
     private static final String WINNING_NUMBER_DELIMITER = ",";
 
+    private WinningNumberParser() {
+        throw new IllegalStateException("Utility class");
+    }
+   
     public static Lotto parse(String winningNumberInput) {
         List<Integer> winningNumbers = convertToIntegerList(splitWinningNumbers(winningNumberInput));
 
