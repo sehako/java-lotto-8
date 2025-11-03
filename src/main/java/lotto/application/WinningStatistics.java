@@ -13,6 +13,10 @@ import lotto.dto.response.LottoCalculationResponse;
 public class WinningStatistics {
     private static final double PERCENTAGE_NUMBER = 100.0;
 
+    private static boolean hasWinningMatch(LottoRank rank) {
+        return rank != null;
+    }
+
     public LottoCalculationResponse calculateWinningStatistics(
             LottoCalculationRequest request
     ) {
@@ -41,7 +45,7 @@ public class WinningStatistics {
     }
 
     private void writeWinningStatistics(LottoRank rank, Map<LottoRank, Long> statistics) {
-        if (rank == null) {
+        if (!hasWinningMatch(rank)) {
             return;
         }
 
