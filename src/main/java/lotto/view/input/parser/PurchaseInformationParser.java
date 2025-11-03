@@ -1,11 +1,10 @@
 package lotto.view.input.parser;
 
-import static lotto.exception.common.ErrorMessage.INVALID_PURCHASE_PRICE;
-import static lotto.exception.common.ErrorMessage.INVALID_PURCHASE_PRICE_RANGE;
-import static lotto.exception.common.ErrorMessage.MAXIMUM_PURCHASE_PRICE_OVER;
+import static lotto.domain.common.ErrorMessage.INVALID_PURCHASE_PRICE;
+import static lotto.domain.common.ErrorMessage.INVALID_PURCHASE_PRICE_RANGE;
+import static lotto.domain.common.ErrorMessage.MAXIMUM_PURCHASE_PRICE_OVER;
 
 import lotto.dto.LottoPurchaseInformation;
-import lotto.exception.PurchaseAmountException;
 import lotto.view.input.validator.NumberInputValidator;
 
 public class PurchaseInformationParser {
@@ -18,7 +17,7 @@ public class PurchaseInformationParser {
         int purchaseAmount = convertToInteger(input);
 
         if (!isValidPurchasePrice(purchaseAmount)) {
-            throw new PurchaseAmountException(INVALID_PURCHASE_PRICE);
+            throw new IllegalArgumentException(INVALID_PURCHASE_PRICE.getMessage());
         }
 
         return LottoPurchaseInformation.of(purchaseAmount);
@@ -29,12 +28,12 @@ public class PurchaseInformationParser {
             int purchaseAmount = Integer.parseInt(input);
 
             if (purchaseAmount > MAX_PURCHASE_PRICE) {
-                throw new PurchaseAmountException(MAXIMUM_PURCHASE_PRICE_OVER);
+                throw new IllegalArgumentException(MAXIMUM_PURCHASE_PRICE_OVER.getMessage());
             }
 
             return purchaseAmount;
         } catch (NumberFormatException e) {
-            throw new PurchaseAmountException(INVALID_PURCHASE_PRICE_RANGE);
+            throw new IllegalArgumentException(INVALID_PURCHASE_PRICE_RANGE.getMessage());
         }
     }
 

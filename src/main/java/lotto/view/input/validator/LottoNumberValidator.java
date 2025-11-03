@@ -1,8 +1,6 @@
 package lotto.view.input.validator;
 
-import static lotto.exception.common.ErrorMessage.INVALID_LOTTO_NUMBER;
-
-import lotto.exception.InvalidLottoNumberException;
+import static lotto.domain.common.ErrorMessage.INVALID_LOTTO_NUMBER;
 
 public class LottoNumberValidator {
     private static final int LOTTO_START_NUMBER = 1;
@@ -10,7 +8,7 @@ public class LottoNumberValidator {
 
     public static void validate(int number) {
         if (!isValidLottoNumber(number)) {
-            throw new InvalidLottoNumberException(INVALID_LOTTO_NUMBER);
+            throw new IllegalArgumentException(INVALID_LOTTO_NUMBER.getMessage());
         }
     }
 

@@ -1,4 +1,4 @@
-package lotto.exception.common;
+package lotto.domain.common;
 
 public enum ErrorMessage {
     INVALID_INPUT("숫자만 입력 가능합니다."),

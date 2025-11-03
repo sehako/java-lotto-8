@@ -1,7 +1,7 @@
 package lotto.view.input.validator;
 
 
-import lotto.exception.common.ErrorMessage;
+import lotto.domain.common.ErrorMessage;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;

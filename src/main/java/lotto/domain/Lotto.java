@@ -1,12 +1,11 @@
 package lotto.domain;
 
-import static lotto.exception.common.ErrorMessage.LOTTO_NUMBER_DUPLICATION;
-import static lotto.exception.common.ErrorMessage.NOT_SIX_LOTTO_NUMBERS;
+import static lotto.domain.common.ErrorMessage.LOTTO_NUMBER_DUPLICATION;
+import static lotto.domain.common.ErrorMessage.NOT_SIX_LOTTO_NUMBERS;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.exception.InvalidLottoNumberException;
 
 public class Lotto {
     private static final String LOTTO_NUMBER_DELIMITER = ", ";
@@ -19,11 +18,11 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new InvalidLottoNumberException(NOT_SIX_LOTTO_NUMBERS);
+            throw new IllegalArgumentException(NOT_SIX_LOTTO_NUMBERS.getMessage());
         }
 
         if (new HashSet<>(numbers).size() != numbers.size()) {
-            throw new InvalidLottoNumberException(LOTTO_NUMBER_DUPLICATION);
+            throw new IllegalArgumentException(LOTTO_NUMBER_DUPLICATION.getMessage());
         }
     }
 

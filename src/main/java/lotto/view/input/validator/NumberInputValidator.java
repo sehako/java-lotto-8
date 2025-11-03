@@ -1,11 +1,10 @@
 package lotto.view.input.validator;
 
-import static lotto.exception.common.ErrorMessage.INVALID_INPUT;
-import static lotto.exception.common.ErrorMessage.NEGATIVE_NUMBER;
-import static lotto.exception.common.ErrorMessage.ZERO_START_NUMBER;
+import static lotto.domain.common.ErrorMessage.INVALID_INPUT;
+import static lotto.domain.common.ErrorMessage.NEGATIVE_NUMBER;
+import static lotto.domain.common.ErrorMessage.ZERO_START_NUMBER;
 
 import java.util.regex.Pattern;
-import lotto.exception.InvalidInputException;
 
 public class NumberInputValidator {
     private static final Pattern NUMBER_PATTERN = Pattern.compile("^-?[0-9]+$");
@@ -20,19 +19,19 @@ public class NumberInputValidator {
 
     private static void validateNumber(String input) {
         if (!isNumber(input)) {
-            throw new InvalidInputException(INVALID_INPUT);
+            throw new IllegalArgumentException(INVALID_INPUT.getMessage());
         }
     }
 
     private static void validateNotZeroStart(String input) {
         if (input.startsWith(ZERO)) {
-            throw new InvalidInputException(ZERO_START_NUMBER);
+            throw new IllegalArgumentException(ZERO_START_NUMBER.getMessage());
         }
     }
 
     private static void validatePositiveNumber(String input) {
         if (input.startsWith(MINUS_SIGN)) {
-            throw new InvalidInputException(NEGATIVE_NUMBER);
+            throw new IllegalArgumentException(NEGATIVE_NUMBER.getMessage());
         }
     }
 

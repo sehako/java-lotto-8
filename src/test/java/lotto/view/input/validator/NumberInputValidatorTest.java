@@ -1,10 +1,10 @@
 package lotto.view.input.validator;
 
-import static lotto.exception.common.ErrorMessage.INVALID_INPUT;
-import static lotto.exception.common.ErrorMessage.NEGATIVE_NUMBER;
-import static lotto.exception.common.ErrorMessage.ZERO_START_NUMBER;
+import static lotto.domain.common.ErrorMessage.INVALID_INPUT;
+import static lotto.domain.common.ErrorMessage.NEGATIVE_NUMBER;
+import static lotto.domain.common.ErrorMessage.ZERO_START_NUMBER;
 
-import lotto.exception.common.ErrorMessage;
+import lotto.domain.common.ErrorMessage;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
