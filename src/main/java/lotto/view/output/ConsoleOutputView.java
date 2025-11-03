@@ -1,6 +1,11 @@
 package lotto.view.output;
 
-import java.util.List;
+import static lotto.view.ViewMessage.LOTTO_ISSUE_COUNT_FORMAT;
+import static lotto.view.ViewMessage.LOTTO_NUMBER_FORMAT;
+import static lotto.view.ViewMessage.LOTTO_STATISTICS_NOTIFICATION;
+import static lotto.view.ViewMessage.LOTTO_STATISTICS_RETURN_RATE_FORMAT;
+import static lotto.view.ViewMessage.LOTTO_STATISTICS_SEPARATOR;
+
 import java.util.Map;
 import lotto.domain.Lotto;
 import lotto.domain.LottoRank;
@@ -8,8 +13,7 @@ import lotto.domain.Lottos;
 import lotto.dto.response.LottoCalculationResponse;
 
 public class ConsoleOutputView implements OutputView {
-    private static final String LOTTO_ISSUE_COUNT_FORMAT = "%d개를 구매했습니다.";
-    private static final String LOTTO_NUMBER_DELIMITER = ", ";
+
 
     @Override
     public void printExceptionMessage(Throwable throwable) {
@@ -23,41 +27,32 @@ public class ConsoleOutputView implements OutputView {
         System.out.println(totalLottoCount);
 
         for (Lotto lotto : lottos.lottoList()) {
-            System.out.print("[");
-
-            String lottoNumbers = String.join(
-                    LOTTO_NUMBER_DELIMITER,
-                    convertToStringList(lotto.numbers())
-            );
-
-            System.out.print(lottoNumbers);
-            System.out.print("]\n");
+            String lottoNumber = String.format(LOTTO_NUMBER_FORMAT, lotto.getNumbersAsString());
+            System.out.println(lottoNumber);
         }
 
-        System.out.println();
+        printNewLine();
     }
 
     @Override
     public void printWinningStatistics(LottoCalculationResponse winningStatistics) {
         Map<LottoRank, Long> statistics = winningStatistics.statistics();
 
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        System.out.printf("3개 일치 (5,000원) - %d개\n", statistics.get(LottoRank.FIFTH));
-        System.out.printf("4개 일치 (50,000원) - %d개\n", statistics.get(LottoRank.FOURTH));
-        System.out.printf("5개 일치 (1,500,000원) - %d개\n", statistics.get(LottoRank.THIRD));
-        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", statistics.get(LottoRank.SECOND));
-        System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", statistics.get(LottoRank.FIRST));
-        System.out.printf("총 수익률은 %.1f%%입니다.", winningStatistics.returnRate());
+        System.out.println(LOTTO_STATISTICS_NOTIFICATION);
+        System.out.println(LOTTO_STATISTICS_SEPARATOR);
+
+        for (LottoRank rank : LottoRank.values()) {
+            System.out.println(rank.formattedDescription(statistics.get(rank)));
+        }
+
+        String returnRateString = String.format(
+                LOTTO_STATISTICS_RETURN_RATE_FORMAT, winningStatistics.returnRate()
+        );
+
+        System.out.println(returnRateString);
     }
 
     private void printNewLine() {
         System.out.println();
-    }
-
-    private List<String> convertToStringList(List<Integer> numbers) {
-        return numbers.stream()
-                .map(String::valueOf)
-                .toList();
     }
 }

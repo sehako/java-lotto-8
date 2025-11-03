@@ -41,7 +41,7 @@ public class WinningStatistics {
     }
 
     private void writeWinningStatistics(LottoRank rank, Map<LottoRank, Long> statistics) {
-        if (LottoRank.NONE == rank) {
+        if (rank == null) {
             return;
         }
 

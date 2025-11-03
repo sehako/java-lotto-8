@@ -5,9 +5,11 @@ import static lotto.exception.common.ErrorMessage.NOT_SIX_LOTTO_NUMBERS;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 import lotto.exception.InvalidLottoNumberException;
 
 public class Lotto {
+    private static final String LOTTO_NUMBER_DELIMITER = ", ";
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -45,5 +47,11 @@ public class Lotto {
 
     public List<Integer> numbers() {
         return List.copyOf(numbers);
+    }
+
+    public String getNumbersAsString() {
+        return numbers.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(LOTTO_NUMBER_DELIMITER));
     }
 }

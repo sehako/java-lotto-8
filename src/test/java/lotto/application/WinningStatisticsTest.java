@@ -3,7 +3,6 @@ package lotto.application;
 import static lotto.domain.LottoRank.FIFTH;
 import static lotto.domain.LottoRank.FIRST;
 import static lotto.domain.LottoRank.FOURTH;
-import static lotto.domain.LottoRank.NONE;
 import static lotto.domain.LottoRank.SECOND;
 import static lotto.domain.LottoRank.THIRD;
 
@@ -56,8 +55,7 @@ class WinningStatisticsTest {
                         SECOND, 0L,
                         THIRD, 0L,
                         FOURTH, 0L,
-                        FIFTH, 1L,
-                        NONE, 0L
+                        FIFTH, 1L
                 ));
 
         Assertions.assertThat(response.returnRate()).isEqualTo(62.5);
