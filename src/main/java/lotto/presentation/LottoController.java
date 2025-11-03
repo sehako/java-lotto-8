@@ -98,4 +98,8 @@ public class LottoController {
             }
         }
     }
+
+    public void stop() {
+        inputView.close();
+    }
 }

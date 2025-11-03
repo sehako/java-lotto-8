@@ -25,4 +25,9 @@ public class ConsoleInputView implements InputView {
         System.out.println(BONUS_NUMBER_INPUT_GUIDE);
         return Console.readLine();
     }
+
+    @Override
+    public void close() {
+        Console.close();
+    }
 }

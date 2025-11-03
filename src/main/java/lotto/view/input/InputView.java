@@ -6,4 +6,6 @@ public interface InputView {
     String inputWinningNumbers();
 
     String inputBonusNumber();
+
+    void close();
 }

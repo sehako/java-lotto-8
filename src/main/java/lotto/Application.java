@@ -22,6 +22,10 @@ public class Application {
                 winningStatistics
         );
 
-        lottoController.run();
+        try {
+            lottoController.run();
+        } finally {
+            lottoController.stop();
+        }
     }
 }
