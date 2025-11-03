@@ -1,11 +1,12 @@
 package lotto;
 
-import lotto.domain.LottoMachine;
-import lotto.domain.WinningStatistics;
-import lotto.view.ConsoleInputView;
-import lotto.view.ConsoleOutputView;
-import lotto.view.InputView;
-import lotto.view.OutputView;
+import lotto.application.LottoMachine;
+import lotto.application.WinningStatistics;
+import lotto.presentation.LottoController;
+import lotto.view.input.ConsoleInputView;
+import lotto.view.input.InputView;
+import lotto.view.output.ConsoleOutputView;
+import lotto.view.output.OutputView;
 
 public class Application {
     public static void main(String[] args) {

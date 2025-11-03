@@ -1,9 +1,9 @@
-package lotto.parser;
+package lotto.view.input.parser;
 
 import lotto.exception.InvalidInputException;
 import lotto.exception.common.ErrorMessage;
-import lotto.validator.LottoNumberValidator;
-import lotto.validator.NumberInputValidator;
+import lotto.view.input.validator.LottoNumberValidator;
+import lotto.view.input.validator.NumberInputValidator;
 
 public class BonusNumberParser {
     public static int parse(String bonusNumberString) {

@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.application;
 
 import static lotto.domain.LottoRank.FIFTH;
 import static lotto.domain.LottoRank.FIRST;
@@ -9,10 +9,12 @@ import static lotto.domain.LottoRank.THIRD;
 
 import java.util.List;
 import java.util.Map;
-import lotto.dto.LottoCalculationRequest;
-import lotto.dto.LottoCalculationResponse;
+import lotto.domain.Lotto;
+import lotto.domain.Lottos;
 import lotto.dto.LottoPurchaseInformation;
 import lotto.dto.WinningLottoInformation;
+import lotto.dto.request.LottoCalculationRequest;
+import lotto.dto.response.LottoCalculationResponse;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

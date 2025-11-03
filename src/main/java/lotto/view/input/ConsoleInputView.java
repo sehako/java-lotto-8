@@ -1,4 +1,4 @@
-package lotto.view;
+package lotto.view.input;
 
 import static lotto.view.message.GuideMessage.BONUS_NUMBER_INPUT_GUIDE;
 import static lotto.view.message.GuideMessage.PURCHASE_AMOUNT_INPUT_GUIDE;

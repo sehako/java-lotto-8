@@ -1,4 +1,4 @@
-package lotto.parser;
+package lotto.view.input.parser;
 
 import static lotto.exception.common.ErrorMessage.INVALID_PURCHASE_PRICE;
 import static lotto.exception.common.ErrorMessage.INVALID_PURCHASE_PRICE_RANGE;
@@ -6,7 +6,7 @@ import static lotto.exception.common.ErrorMessage.MAXIMUM_PURCHASE_PRICE_OVER;
 
 import lotto.dto.LottoPurchaseInformation;
 import lotto.exception.PurchaseAmountException;
-import lotto.validator.NumberInputValidator;
+import lotto.view.input.validator.NumberInputValidator;
 
 public class PurchaseInformationParser {
     private static final int BASIC_PURCHASE_PRICE = 1000;

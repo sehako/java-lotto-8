@@ -1,10 +1,10 @@
-package lotto.parser;
+package lotto.view.input.parser;
 
 import java.util.List;
 import lotto.domain.Lotto;
 import lotto.exception.InvalidLottoNumberException;
 import lotto.exception.common.ErrorMessage;
-import lotto.validator.LottoNumberValidator;
+import lotto.view.input.validator.LottoNumberValidator;
 
 public class WinningNumberParser {
     private static final String WINNING_NUMBER_DELIMITER = ",";

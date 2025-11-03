@@ -1,11 +1,11 @@
-package lotto.view;
+package lotto.view.output;
 
 import java.util.List;
 import java.util.Map;
 import lotto.domain.Lotto;
 import lotto.domain.LottoRank;
 import lotto.domain.Lottos;
-import lotto.dto.LottoCalculationResponse;
+import lotto.dto.response.LottoCalculationResponse;
 
 public class ConsoleOutputView implements OutputView {
     private static final String LOTTO_ISSUE_COUNT_FORMAT = "%d개를 구매했습니다.";

@@ -1,7 +1,7 @@
-package lotto.view;
+package lotto.view.output;
 
 import lotto.domain.Lottos;
-import lotto.dto.LottoCalculationResponse;
+import lotto.dto.response.LottoCalculationResponse;
 
 public interface OutputView {
     void printExceptionMessage(Throwable throwable);

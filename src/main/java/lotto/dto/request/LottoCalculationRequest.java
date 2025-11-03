@@ -1,6 +1,8 @@
-package lotto.dto;
+package lotto.dto.request;
 
 import lotto.domain.Lottos;
+import lotto.dto.LottoPurchaseInformation;
+import lotto.dto.WinningLottoInformation;
 
 public record LottoCalculationRequest(
         LottoPurchaseInformation purchaseInformation,

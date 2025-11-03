@@ -1,4 +1,4 @@
-package lotto.dto;
+package lotto.dto.response;
 
 import java.util.Map;
 import lotto.domain.LottoRank;

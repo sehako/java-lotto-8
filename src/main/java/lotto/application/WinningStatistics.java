@@ -1,11 +1,14 @@
-package lotto.domain;
+package lotto.application;
 
 import java.util.EnumMap;
 import java.util.Map;
-import lotto.dto.LottoCalculationRequest;
-import lotto.dto.LottoCalculationResponse;
+import lotto.domain.Lotto;
+import lotto.domain.LottoRank;
+import lotto.domain.Lottos;
 import lotto.dto.LottoPurchaseInformation;
 import lotto.dto.WinningLottoInformation;
+import lotto.dto.request.LottoCalculationRequest;
+import lotto.dto.response.LottoCalculationResponse;
 
 public class WinningStatistics {
     private static final double PERCENTAGE_NUMBER = 100.0;

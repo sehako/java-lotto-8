@@ -1,4 +1,4 @@
-package lotto.parser;
+package lotto.view.input.parser;
 
 import lotto.exception.common.ErrorMessage;
 import org.assertj.core.api.Assertions;

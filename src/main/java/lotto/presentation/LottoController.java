@@ -1,18 +1,18 @@
-package lotto;
+package lotto.presentation;
 
+import lotto.application.LottoMachine;
+import lotto.application.WinningStatistics;
 import lotto.domain.Lotto;
-import lotto.domain.LottoMachine;
 import lotto.domain.Lottos;
-import lotto.domain.WinningStatistics;
-import lotto.dto.LottoCalculationRequest;
-import lotto.dto.LottoCalculationResponse;
 import lotto.dto.LottoPurchaseInformation;
 import lotto.dto.WinningLottoInformation;
-import lotto.parser.BonusNumberParser;
-import lotto.parser.PurchaseInformationParser;
-import lotto.parser.WinningNumberParser;
-import lotto.view.InputView;
-import lotto.view.OutputView;
+import lotto.dto.request.LottoCalculationRequest;
+import lotto.dto.response.LottoCalculationResponse;
+import lotto.view.input.InputView;
+import lotto.view.input.parser.BonusNumberParser;
+import lotto.view.input.parser.PurchaseInformationParser;
+import lotto.view.input.parser.WinningNumberParser;
+import lotto.view.output.OutputView;
 
 public class LottoController {
     private final InputView inputView;

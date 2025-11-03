@@ -1,4 +1,4 @@
-package lotto.validator;
+package lotto.view.input.validator;
 
 import static lotto.exception.common.ErrorMessage.INVALID_LOTTO_NUMBER;
 
