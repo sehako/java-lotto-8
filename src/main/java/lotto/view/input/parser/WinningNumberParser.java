@@ -4,7 +4,6 @@ import static lotto.domain.common.ErrorMessage.INVALID_LOTTO_NUMBER;
 
 import java.util.List;
 import lotto.domain.Lotto;
-import lotto.view.input.validator.LottoNumberValidator;
 
 public class WinningNumberParser {
     private static final String WINNING_NUMBER_DELIMITER = ",";
@@ -12,7 +11,7 @@ public class WinningNumberParser {
     private WinningNumberParser() {
         throw new IllegalStateException("Utility class");
     }
-   
+
     public static Lotto parse(String winningNumberInput) {
         List<Integer> winningNumbers = convertToIntegerList(splitWinningNumbers(winningNumberInput));
 
@@ -25,12 +24,7 @@ public class WinningNumberParser {
 
     private static List<Integer> convertToIntegerList(List<String> winningNumberList) {
         return winningNumberList.stream()
-                .map(number -> {
-                    number = number.trim();
-                    int lottoNumber = convertToInteger(number);
-                    LottoNumberValidator.validate(lottoNumber);
-                    return lottoNumber;
-                })
+                .map(number -> convertToInteger(number.trim()))
                 .toList();
     }
 

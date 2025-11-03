@@ -2,7 +2,6 @@ package lotto.domain;
 
 import static lotto.domain.common.ErrorMessage.INVALID_LOTTO_NUMBER;
 import static lotto.domain.common.ErrorMessage.LOTTO_NUMBER_DUPLICATION;
-import static lotto.domain.common.ErrorMessage.NOT_SIX_LOTTO_NUMBERS;
 
 import java.util.HashSet;
 import java.util.List;
@@ -29,21 +28,21 @@ public class Lotto {
     private static void validateLottoNumberRange(List<Integer> numbers) {
         numbers.forEach(number -> {
             if (LOTTO_START_NUMBER > number || number > LOTTO_END_NUMBER) {
-                throw new IllegalArgumentException(NOT_SIX_LOTTO_NUMBERS.getMessage());
+                throw new IllegalArgumentException(INVALID_LOTTO_NUMBER.getMessage());
             }
         });
-    }
-
-    private void validate(List<Integer> numbers) {
-        validateLottoNumberCount(numbers);
-        validateLottoNumberUnique(numbers);
-        validateLottoNumberRange(numbers);
     }
 
     private void validateLottoNumberCount(List<Integer> numbers) {
         if (numbers.size() != LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException(INVALID_LOTTO_NUMBER.getMessage());
         }
+    }
+
+    private void validate(List<Integer> numbers) {
+        validateLottoNumberCount(numbers);
+        validateLottoNumberUnique(numbers);
+        validateLottoNumberRange(numbers);
     }
 
     private List<Integer> sortNumbers(List<Integer> numbers) {
